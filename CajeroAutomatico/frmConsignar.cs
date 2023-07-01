@@ -8,12 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
 namespace CajeroAutomatico
 {
-    public partial class frmValorRetiro : Form
+    public partial class frmConsignar : Form
     {
-        public frmValorRetiro()
+        public frmConsignar()
         {
             InitializeComponent();
         }
@@ -34,17 +33,14 @@ namespace CajeroAutomatico
                 Top += (e.Y - posY);
             }
         }
-
-        private void frmValorRetiro_MouseMove(object sender, MouseEventArgs e)
+        private void frmConsignar_Load(object sender, EventArgs e)
         {
-            MoverVentana(sender, e);
+
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void frmConsignar_MouseMove(object sender, MouseEventArgs e)
         {
-            int saldo = Int32.Parse(txtSaldo.Text);
-            frmRetirar frmRetirar = new frmRetirar();
-            frmRetirar.retirarSaldo(saldo);
+            MoverVentana(sender, e);
         }
 
         private void button9_Click(object sender, EventArgs e)

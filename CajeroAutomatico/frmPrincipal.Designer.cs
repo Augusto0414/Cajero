@@ -1,6 +1,6 @@
 ﻿namespace CajeroAutomatico
 {
-    partial class Form1
+    partial class frmPrincipal
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipal));
             ptrClosed = new PictureBox();
             button1 = new Button();
             button2 = new Button();
@@ -67,6 +67,7 @@
             button2.TabIndex = 4;
             button2.Text = "SALDO";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // button3
             // 
@@ -76,6 +77,7 @@
             button3.TabIndex = 5;
             button3.Text = "CONSIGNAR";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // button4
             // 
@@ -87,7 +89,7 @@
             button4.UseVisualStyleBackColor = true;
             button4.Click += button4_Click;
             // 
-            // Form1
+            // frmPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -99,7 +101,7 @@
             Controls.Add(button1);
             Controls.Add(ptrClosed);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "Form1";
+            Name = "frmPrincipal";
             Text = "Form1";
             Load += Form1_Load;
             MouseMove += Form1_MouseMove;

@@ -22,6 +22,9 @@ namespace CajeroAutomatico
         private int posY = 0;
 
 
+        string rutaSaldo = "saldo.txt";
+        //string rutaBilletes = "billetes.txt"; 
+
 
         int billete_100k = 2;
         int billete_50k = 3;
@@ -43,13 +46,39 @@ namespace CajeroAutomatico
             }
         }
 
-        int saldo = 200000;
+
+        static int LeerSaldoDesdeArchivo(string rutaArchivo)
+        {
+            if (File.Exists(rutaArchivo))
+            {
+                string contenido = File.ReadAllText(rutaArchivo);
+                int saldo;
+                if (int.TryParse(contenido, out saldo))
+                {
+                    return saldo;
+                }
+            }
+
+            return 0;
+        }
+
+
+
+        static void GuardarSaldoEnArchivo(string rutaArchivo, string saldo)
+        {
+            using (StreamWriter sw = new StreamWriter(rutaArchivo, append: false))
+            {
+                sw.WriteLine(saldo);
+            }
+        }
+
 
         public  void retirarSaldo(int cantidad)
         {
+            int saldo =  LeerSaldoDesdeArchivo(rutaSaldo); 
             if (cantidad <= saldo)
             {
-
+                
                 if (cantidad <= (billete_100k * 100000) + (billete_50k * 50000) + (billete_20k * 20000) + (billete_10k * 10000))
                 {
                     int billetes_restantes = cantidad;
@@ -76,6 +105,7 @@ namespace CajeroAutomatico
                     {
                         saldo -= cantidad;
                         MessageBox.Show($"saldo actual es {saldo}");
+                        GuardarSaldoEnArchivo(rutaSaldo,saldo.ToString());
                     }
                     else
                     {
@@ -104,7 +134,7 @@ namespace CajeroAutomatico
         private void button9_Click(object sender, EventArgs e)
         {
             Form inicio
-                = new Form1();
+                = new frmPrincipal();
             inicio.Show();
             this.Close();
         }

@@ -1,11 +1,11 @@
 namespace CajeroAutomatico
 {
-    public partial class Form1 : Form
+    public partial class frmPrincipal : Form
     {
 
 
 
-        public Form1()
+        public frmPrincipal()
         {
             InitializeComponent();
 
@@ -43,11 +43,6 @@ namespace CajeroAutomatico
             MoverVentana(sender, e);
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
 
 
         private void button4_Click(object sender, EventArgs e)
@@ -57,9 +52,25 @@ namespace CajeroAutomatico
 
         private void button1_Click(object sender, EventArgs e)
         {
-           Form retirar= new frmRetirar();
+            Form retirar = new frmRetirar();
             retirar.Show();
-            Hide(); 
+            Hide();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form frmSaldo = new frmConsultarSaldo();
+            frmSaldo.Show();
+            Hide();
+        }
+
+   
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Form consignar = new frmConsignar();
+            consignar.Show();
+            Hide();
         }
     }
 }
