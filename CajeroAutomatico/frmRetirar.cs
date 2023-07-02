@@ -25,12 +25,8 @@ namespace CajeroAutomatico
         string rutaSaldo = "saldo.txt";
         //string rutaBilletes = "billetes.txt"; 
 
-
-        int billete_100k = 2;
-        int billete_50k = 3;
-        int billete_20k = 5;
-        int billete_10k = 10;
-
+        int[] billetes = { 100000, 50000, 20000, 10000 };
+        int[] cantidadDisponible = { 40, 40, 40, 40 };
 
         private void MoverVentana(object sender, MouseEventArgs e)
         {
@@ -73,63 +69,60 @@ namespace CajeroAutomatico
         }
 
 
-        public  void retirarSaldo(int cantidad)
+        public void retirarSaldo(int cantidadRetirar)
         {
-            int saldo =  LeerSaldoDesdeArchivo(rutaSaldo); 
-            if (cantidad <= saldo)
-            {
-                
-                if (cantidad <= (billete_100k * 100000) + (billete_50k * 50000) + (billete_20k * 20000) + (billete_10k * 10000))
-                {
-                    int billetes_restantes = cantidad;
-                    while (billetes_restantes >= 100000 && billete_100k > 0)
-                    {
-                        billetes_restantes -= 100000;
-                        billete_100k -= 1;
-                    }
-                    while (billetes_restantes >= 50000 && billete_50k > 0)
-                    {
-                        billetes_restantes -= 50000;
-                        billete_50k -= 1;
-                    }
-                    while (billetes_restantes >= 20000 && billete_20k > 0)
-                    {
-                        billetes_restantes -= 20000;
-                        billete_20k -= 1;
-                    } while (billetes_restantes >= 10000 && billete_10k > 0)
-                    {
-                        billetes_restantes -= 10000;
-                        billete_10k -= 1;
-                    }
-                    if (billetes_restantes == 0)
-                    {
-                        saldo -= cantidad;
-                        MessageBox.Show($"saldo actual es {saldo}");
-                        GuardarSaldoEnArchivo(rutaSaldo,saldo.ToString());
-                    }
-                    else
-                    {
-                        MessageBox.Show("No hay suficientes billetes disponibles para realizar el retiro");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("No hay suficiente saldo disponible para realizar el retiro");
-                }
+            int cantidad = cantidadRetirar;
+            int[] billetesRetirados = new int[billetes.Length];
+            Array.Fill(billetesRetirados, 0);
 
-            }
-            else
+
+            while (cantidad > 0)
             {
-                MessageBox.Show("Saldo insuficiente.");
+                for (int i = 0; i < billetes.Length; i++)
+                {
+
+                    if (cantidad >= billetes[i] && cantidadDisponible[i] > 0)
+                    {
+
+                        cantidad -= billetes[i];
+                        cantidadDisponible[i]--;
+                        billetesRetirados[i]++;
+
+                    }
+
+                }
+            }
+            List<string> valorRetirado = new List<string>();
+
+            for (int i = 0; i < billetes.Length; i++)
+            {
+                string denominacion = $"${billetes[i]}";
+                string cantidadRetirada = billetesRetirados[i].ToString();
+
+                valorRetirado.Add(denominacion);
+                valorRetirado.Add(cantidadRetirada);
             }
 
+            // Configurar las columnas del DataGridView
+            dataGridView1.Columns.Add("Denominación", "Denominación");
+            dataGridView1.Columns.Add("Cantidad retirada", "Cantidad retirada");
+
+            // Agregar los datos a las filas del DataGridView
+            for (int i = 0; i < valorRetirado.Count; i += 2)
+            {
+                string denominacion = valorRetirado[i];
+                string cantidadRetirada = valorRetirado[i + 1];
+
+                dataGridView1.Rows.Add(denominacion, cantidadRetirada);
+            }
         }
 
 
-        private void label1_Click(object sender, EventArgs e)
-        {
 
-        }
+
+
+
+
 
         private void button9_Click(object sender, EventArgs e)
         {
@@ -188,9 +181,9 @@ namespace CajeroAutomatico
 
         private void button8_Click(object sender, EventArgs e)
         {
-            Form frmRetiro = new frmValorRetiro(); 
+            Form frmRetiro = new frmValorRetiro();
             frmRetiro.Show();
-            Hide(); 
+            Hide();
         }
     }
 }

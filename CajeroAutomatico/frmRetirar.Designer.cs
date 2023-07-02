@@ -38,18 +38,19 @@
             button7 = new Button();
             button8 = new Button();
             button9 = new Button();
+            dataGridView1 = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(251, 48);
+            label1.Location = new Point(280, 31);
             label1.Name = "label1";
             label1.Size = new Size(290, 25);
             label1.TabIndex = 0;
             label1.Text = "SELECIONAR VALOR A RETIRAR";
-            label1.Click += label1_Click;
             // 
             // button1
             // 
@@ -137,7 +138,7 @@
             // 
             // button9
             // 
-            button9.Location = new Point(54, 388);
+            button9.Location = new Point(54, 506);
             button9.Name = "button9";
             button9.Size = new Size(116, 34);
             button9.TabIndex = 9;
@@ -145,12 +146,25 @@
             button9.UseVisualStyleBackColor = true;
             button9.Click += button9_Click;
             // 
+            // dataGridView1
+            // 
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(803, 115);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
+            dataGridView1.RowTemplate.Height = 25;
+            dataGridView1.Size = new Size(360, 352);
+            dataGridView1.TabIndex = 10;
+            // 
             // frmRetirar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1235, 552);
+            Controls.Add(dataGridView1);
             Controls.Add(button9);
             Controls.Add(button8);
             Controls.Add(button7);
@@ -166,6 +180,7 @@
             Name = "frmRetirar";
             Text = "frmRetirar";
             MouseMove += frmRetirar_MouseMove;
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -182,5 +197,6 @@
         private Button button7;
         private Button button8;
         private Button button9;
+        private DataGridView dataGridView1;
     }
 }
