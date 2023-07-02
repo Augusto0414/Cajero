@@ -39,10 +39,11 @@
             button8 = new Button();
             button9 = new Button();
             dataGridView1 = new DataGridView();
-            btnRetirar = new Button();
-            txtSaldo = new TextBox();
             Denominación = new DataGridViewTextBoxColumn();
             Cantidad = new DataGridViewTextBoxColumn();
+            btnRetirar = new Button();
+            txtSaldo = new TextBox();
+            btnHistorial = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -167,6 +168,18 @@
             dataGridView1.Size = new Size(281, 195);
             dataGridView1.TabIndex = 10;
             // 
+            // Denominación
+            // 
+            Denominación.HeaderText = "Denominación";
+            Denominación.Name = "Denominación";
+            Denominación.ReadOnly = true;
+            // 
+            // Cantidad
+            // 
+            Cantidad.HeaderText = "Cantidad retirada";
+            Cantidad.Name = "Cantidad";
+            Cantidad.ReadOnly = true;
+            // 
             // btnRetirar
             // 
             btnRetirar.Location = new Point(221, 413);
@@ -184,17 +197,15 @@
             txtSaldo.Size = new Size(238, 23);
             txtSaldo.TabIndex = 11;
             // 
-            // Denominación
+            // btnHistorial
             // 
-            Denominación.HeaderText = "Denominación";
-            Denominación.Name = "Denominación";
-            Denominación.ReadOnly = true;
-            // 
-            // Cantidad
-            // 
-            Cantidad.HeaderText = "Cantidad retirada";
-            Cantidad.Name = "Cantidad";
-            Cantidad.ReadOnly = true;
+            btnHistorial.Location = new Point(915, 506);
+            btnHistorial.Name = "btnHistorial";
+            btnHistorial.Size = new Size(116, 34);
+            btnHistorial.TabIndex = 21;
+            btnHistorial.Text = "Historial";
+            btnHistorial.UseVisualStyleBackColor = true;
+            btnHistorial.Click += btnHistorial_Click;
             // 
             // frmRetirar
             // 
@@ -202,6 +213,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1083, 552);
+            Controls.Add(btnHistorial);
             Controls.Add(btnRetirar);
             Controls.Add(txtSaldo);
             Controls.Add(dataGridView1);
@@ -242,5 +254,6 @@
         private TextBox txtSaldo;
         private DataGridViewTextBoxColumn Denominación;
         private DataGridViewTextBoxColumn Cantidad;
+        private Button btnHistorial;
     }
 }

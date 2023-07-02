@@ -50,5 +50,7 @@ namespace CajeroAutomatico
             inicio.Show();
             this.Close();
         }
+
+       
     }
 }

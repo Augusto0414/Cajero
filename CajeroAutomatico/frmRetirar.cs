@@ -25,7 +25,7 @@ namespace CajeroAutomatico
 
 
         string historialTransacion = "historialTransaciones.txt";
-        string historialBillete = "historialBillete.txt"; 
+        string historialBillete = "historialBillete.txt";
         //string rutaBilletes = "billetes.txt"; 
 
         int[] billetes = { 100000, 50000, 20000, 10000 };
@@ -45,29 +45,11 @@ namespace CajeroAutomatico
             }
         }
 
-
-        static int LeerSaldoDesdeArchivo(string rutaArchivo)
-        {
-            if (File.Exists(rutaArchivo))
-            {
-                string contenido = File.ReadAllText(rutaArchivo);
-                int saldo;
-                if (int.TryParse(contenido, out saldo))
-                {
-                    return saldo;
-                }
-            }
-
-            return 0;
-        }
-
-
-
-        static void GuardarSaldoEnArchivo(string rutaArchivo, string cantidadRetirar, string billetesRetirados)
+        static void GuardarSaldoEnArchivo(string rutaArchivo, string data)
         {
             using (StreamWriter sw = new StreamWriter(rutaArchivo, append: true))
             {
-                sw.WriteLine( cantidadRetirar, billetesRetirados);
+                sw.WriteLine(data);
             }
         }
 
@@ -81,6 +63,7 @@ namespace CajeroAutomatico
 
             while (cantidad > 0)
             {
+
                 for (int i = 0; i < billetes.Length; i++)
                 {
 
@@ -97,6 +80,7 @@ namespace CajeroAutomatico
             }
             dataGridView1.Rows.Clear();
             List<string> valorRetirado = new List<string>();
+            StringBuilder filas = new StringBuilder();
 
             for (int i = 0; i < billetes.Length; i++)
             {
@@ -105,10 +89,11 @@ namespace CajeroAutomatico
 
                 valorRetirado.Add(denominacion);
                 valorRetirado.Add(cantidadRetirada);
-                GuardarSaldoEnArchivo(historialTransacion,denominacion, cantidadRetirada);
-            }
 
-        
+                string fila = $"{cantidadRetirada};";
+                filas.Append(fila);
+            }
+            GuardarSaldoEnArchivo(historialTransacion, filas.ToString());
 
             // Agregar los datos a las filas del DataGridView
             for (int i = 0; i < valorRetirado.Count; i += 2)
@@ -190,8 +175,30 @@ namespace CajeroAutomatico
 
         private void btnRetirar_Click(object sender, EventArgs e)
         {
-            int saldo = Int32.Parse(txtSaldo.Text);
-            retirarSaldo(saldo);
+
+            if (string.IsNullOrEmpty(txtSaldo.Text))
+            {
+                MessageBox.Show(" Digite valor a retirar ");
+
+            }
+            else if (Int32.Parse(txtSaldo.Text) < 10000)
+            {
+
+                MessageBox.Show("No es posible entregar la cantidad solicitada");
+            }
+            else
+            {
+
+                int saldo = Int32.Parse(txtSaldo.Text);
+                retirarSaldo(saldo);
+            }
+        }
+
+        private void btnHistorial_Click(object sender, EventArgs e)
+        {
+            Form historial = new frmHistorial();
+            historial.Show();
+            this.Close();
         }
     }
 }
