@@ -39,6 +39,10 @@
             button8 = new Button();
             button9 = new Button();
             dataGridView1 = new DataGridView();
+            btnRetirar = new Button();
+            txtSaldo = new TextBox();
+            Denominación = new DataGridViewTextBoxColumn();
+            Cantidad = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -150,20 +154,56 @@
             // 
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.AllowUserToOrderColumns = true;
+            dataGridView1.BackgroundColor = Color.White;
+            dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(803, 115);
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Denominación, Cantidad });
+            dataGridView1.GridColor = Color.White;
+            dataGridView1.Location = new Point(780, 115);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(360, 352);
+            dataGridView1.Size = new Size(281, 195);
             dataGridView1.TabIndex = 10;
+            // 
+            // btnRetirar
+            // 
+            btnRetirar.Location = new Point(221, 413);
+            btnRetirar.Name = "btnRetirar";
+            btnRetirar.Size = new Size(238, 40);
+            btnRetirar.TabIndex = 12;
+            btnRetirar.Text = "RETIRAR";
+            btnRetirar.UseVisualStyleBackColor = true;
+            btnRetirar.Click += btnRetirar_Click;
+            // 
+            // txtSaldo
+            // 
+            txtSaldo.Location = new Point(221, 346);
+            txtSaldo.Name = "txtSaldo";
+            txtSaldo.Size = new Size(238, 23);
+            txtSaldo.TabIndex = 11;
+            // 
+            // Denominación
+            // 
+            Denominación.HeaderText = "Denominación";
+            Denominación.Name = "Denominación";
+            Denominación.ReadOnly = true;
+            // 
+            // Cantidad
+            // 
+            Cantidad.HeaderText = "Cantidad retirada";
+            Cantidad.Name = "Cantidad";
+            Cantidad.ReadOnly = true;
             // 
             // frmRetirar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1235, 552);
+            ClientSize = new Size(1083, 552);
+            Controls.Add(btnRetirar);
+            Controls.Add(txtSaldo);
             Controls.Add(dataGridView1);
             Controls.Add(button9);
             Controls.Add(button8);
@@ -198,5 +238,9 @@
         private Button button8;
         private Button button9;
         private DataGridView dataGridView1;
+        private Button btnRetirar;
+        private TextBox txtSaldo;
+        private DataGridViewTextBoxColumn Denominación;
+        private DataGridViewTextBoxColumn Cantidad;
     }
 }

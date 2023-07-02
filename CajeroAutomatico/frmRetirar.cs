@@ -15,6 +15,8 @@ namespace CajeroAutomatico
         public frmRetirar()
         {
             InitializeComponent();
+            btnRetirar.Visible = false;
+            txtSaldo.Visible = false;
         }
 
 
@@ -22,7 +24,8 @@ namespace CajeroAutomatico
         private int posY = 0;
 
 
-        string rutaSaldo = "saldo.txt";
+        string historialTransacion = "historialTransaciones.txt";
+        string historialBillete = "historialBillete.txt"; 
         //string rutaBilletes = "billetes.txt"; 
 
         int[] billetes = { 100000, 50000, 20000, 10000 };
@@ -60,11 +63,11 @@ namespace CajeroAutomatico
 
 
 
-        static void GuardarSaldoEnArchivo(string rutaArchivo, string saldo)
+        static void GuardarSaldoEnArchivo(string rutaArchivo, string cantidadRetirar, string billetesRetirados)
         {
-            using (StreamWriter sw = new StreamWriter(rutaArchivo, append: false))
+            using (StreamWriter sw = new StreamWriter(rutaArchivo, append: true))
             {
-                sw.WriteLine(saldo);
+                sw.WriteLine( cantidadRetirar, billetesRetirados);
             }
         }
 
@@ -92,6 +95,7 @@ namespace CajeroAutomatico
 
                 }
             }
+            dataGridView1.Rows.Clear();
             List<string> valorRetirado = new List<string>();
 
             for (int i = 0; i < billetes.Length; i++)
@@ -101,11 +105,10 @@ namespace CajeroAutomatico
 
                 valorRetirado.Add(denominacion);
                 valorRetirado.Add(cantidadRetirada);
+                GuardarSaldoEnArchivo(historialTransacion,denominacion, cantidadRetirada);
             }
 
-            // Configurar las columnas del DataGridView
-            dataGridView1.Columns.Add("Denominación", "Denominación");
-            dataGridView1.Columns.Add("Cantidad retirada", "Cantidad retirada");
+        
 
             // Agregar los datos a las filas del DataGridView
             for (int i = 0; i < valorRetirado.Count; i += 2)
@@ -181,9 +184,14 @@ namespace CajeroAutomatico
 
         private void button8_Click(object sender, EventArgs e)
         {
-            Form frmRetiro = new frmValorRetiro();
-            frmRetiro.Show();
-            Hide();
+            btnRetirar.Visible = true;
+            txtSaldo.Visible = true;
+        }
+
+        private void btnRetirar_Click(object sender, EventArgs e)
+        {
+            int saldo = Int32.Parse(txtSaldo.Text);
+            retirarSaldo(saldo);
         }
     }
 }
