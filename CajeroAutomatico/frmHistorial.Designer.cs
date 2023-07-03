@@ -43,6 +43,8 @@
             dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
             label3 = new Label();
+            label4 = new Label();
+            lblRetiro = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             SuspendLayout();
@@ -51,16 +53,16 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(221, 38);
+            label1.Location = new Point(223, 23);
             label1.Name = "label1";
-            label1.Size = new Size(290, 25);
+            label1.Size = new Size(208, 25);
             label1.TabIndex = 1;
-            label1.Text = "HISTORIAL DE CONSIGNACIÓN";
+            label1.Text = "HISTORIAL DE RETIRO";
             // 
             // button9
             // 
             button9.Cursor = Cursors.Hand;
-            button9.Location = new Point(37, 364);
+            button9.Location = new Point(37, 400);
             button9.Name = "button9";
             button9.Size = new Size(123, 34);
             button9.TabIndex = 10;
@@ -173,12 +175,32 @@
             label3.TabIndex = 15;
             label3.Text = "Total de billetes retirados:";
             // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(37, 353);
+            label4.Name = "label4";
+            label4.Size = new Size(119, 15);
+            label4.TabIndex = 16;
+            label4.Text = "Total dinero retirado: ";
+            // 
+            // lblRetiro
+            // 
+            lblRetiro.AutoSize = true;
+            lblRetiro.Location = new Point(162, 353);
+            lblRetiro.Name = "lblRetiro";
+            lblRetiro.Size = new Size(13, 15);
+            lblRetiro.TabIndex = 17;
+            lblRetiro.Text = "0";
+            // 
             // frmHistorial
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(766, 410);
+            ClientSize = new Size(766, 446);
+            Controls.Add(lblRetiro);
+            Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(dataGridView2);
             Controls.Add(lblConsignacion);
@@ -213,5 +235,7 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private Label label3;
+        private Label label4;
+        private Label lblRetiro;
     }
 }

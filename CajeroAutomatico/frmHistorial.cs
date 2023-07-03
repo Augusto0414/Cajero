@@ -19,7 +19,7 @@ namespace CajeroAutomatico
             consultar();
             contadorColumnas();
             lblConsignacion.Text = dataGridView1.RowCount.ToString();
-
+           
 
         }
 
@@ -98,8 +98,38 @@ namespace CajeroAutomatico
                     }
                 }
             }
-            MostrarSumasEnDataGridView(sumas);
 
+            MostrarSumasEnDataGridView(sumas);
+            
+            lblRetiro.Text = totalRetiro(sumas).ToString();
+        }
+
+        private int totalRetiro( int[] suma) {
+
+            int sumaTotal = 0; 
+
+            for (int i = 0; i < suma.Length; i++)
+            {
+                int valorMultiplicado;
+                switch (i)
+                { 
+                  case 0: valorMultiplicado =  ( suma[i] * 100000 ); 
+                        break;
+                  case 1:valorMultiplicado = ( suma[i] * 50000 ); 
+                        break;
+                  case 2: valorMultiplicado = (suma[i] * 20000); 
+                        break;
+                 case 3: valorMultiplicado = (suma[i] * 10000);
+                        break;
+                 default:
+                        valorMultiplicado = suma[i];
+                        break;
+
+                }
+                sumaTotal += valorMultiplicado;  
+            }
+            return sumaTotal;
+        
         }
 
         private void MostrarSumasEnDataGridView(int[] sumas)
