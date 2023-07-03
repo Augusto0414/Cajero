@@ -44,7 +44,16 @@
             btnRetirar = new Button();
             txtSaldo = new TextBox();
             btnHistorial = new Button();
+            dataGridView2 = new DataGridView();
+            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
+            label2 = new Label();
+            label3 = new Label();
+            lblTotal = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -207,12 +216,82 @@
             btnHistorial.UseVisualStyleBackColor = true;
             btnHistorial.Click += btnHistorial_Click;
             // 
+            // dataGridView2
+            // 
+            dataGridView2.AllowUserToAddRows = false;
+            dataGridView2.AllowUserToDeleteRows = false;
+            dataGridView2.BackgroundColor = Color.White;
+            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4 });
+            dataGridView2.GridColor = Color.White;
+            dataGridView2.Location = new Point(611, 378);
+            dataGridView2.Name = "dataGridView2";
+            dataGridView2.ReadOnly = true;
+            dataGridView2.RowTemplate.Height = 25;
+            dataGridView2.Size = new Size(450, 73);
+            dataGridView2.TabIndex = 22;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            dataGridViewTextBoxColumn1.HeaderText = "$100.000";
+            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            dataGridViewTextBoxColumn2.HeaderText = "$50.000";
+            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            dataGridViewTextBoxColumn3.HeaderText = "$20.000";
+            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            dataGridViewTextBoxColumn4.HeaderText = "$10.000";
+            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(611, 354);
+            label2.Name = "label2";
+            label2.Size = new Size(175, 15);
+            label2.TabIndex = 23;
+            label2.Text = "Cantidad disponible en el cajero";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(611, 460);
+            label3.Name = "label3";
+            label3.Size = new Size(33, 15);
+            label3.TabIndex = 24;
+            label3.Text = "Total";
+            // 
+            // lblTotal
+            // 
+            lblTotal.AutoSize = true;
+            lblTotal.Location = new Point(651, 460);
+            lblTotal.Name = "lblTotal";
+            lblTotal.Size = new Size(14, 15);
+            lblTotal.TabIndex = 25;
+            lblTotal.Text = "0";
+            // 
             // frmRetirar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1083, 552);
+            Controls.Add(lblTotal);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(dataGridView2);
             Controls.Add(btnHistorial);
             Controls.Add(btnRetirar);
             Controls.Add(txtSaldo);
@@ -233,6 +312,7 @@
             Text = "frmRetirar";
             MouseMove += frmRetirar_MouseMove;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -255,5 +335,13 @@
         private DataGridViewTextBoxColumn Denominación;
         private DataGridViewTextBoxColumn Cantidad;
         private Button btnHistorial;
+        private DataGridView dataGridView2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private Label label2;
+        private Label label3;
+        private Label lblTotal;
     }
 }

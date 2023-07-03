@@ -25,7 +25,6 @@ namespace CajeroAutomatico
 
         private int posX = 0;
         private int posY = 0;
-        string historialTransacion = "historialTransaciones.txt";
         private void MoverVentana(object sender, MouseEventArgs e)
         {
             if (e.Button != MouseButtons.Left)
